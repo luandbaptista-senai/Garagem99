@@ -4,6 +4,7 @@
  */
 package br.eti.luan.garagem.controller;
 
+import br.eti.luan.garagem.DTO.VeiculoMinDTO;
 import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.services.GaragemService;
 import java.util.List;
@@ -21,9 +22,10 @@ public class GaragemController {
     private GaragemService garagemService;
 
 @GetMapping("/forsale")
-public List<Veiculo> findAll() {
-    List<Veiculo> result = garagemService.findAll();
+public List<VeiculoMinDTO> findAll() {
+    List<VeiculoMinDTO> result = garagemService.findAll();
     return result;
-}
+} 
+
 
 }

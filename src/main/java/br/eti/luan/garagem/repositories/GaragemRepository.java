@@ -5,6 +5,7 @@
 package br.eti.luan.garagem.repositories;
 
 import br.eti.luan.garagem.entities.Veiculo;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,4 +14,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface GaragemRepository extends JpaRepository<Veiculo, Long>{
     
+    List<Veiculo> findByCorIgnoreCase(String color);
+    
+    List<Veiculo> findByAno(int year);
+    
+    //Veiculo findById(long id);
 }

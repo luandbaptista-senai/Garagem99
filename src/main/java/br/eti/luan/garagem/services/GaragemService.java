@@ -4,6 +4,7 @@
  */
 package br.eti.luan.garagem.services;
 
+import br.eti.luan.garagem.DTO.VeiculoMinDTO;
 import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.repositories.GaragemRepository;
 import java.util.List;
@@ -20,9 +21,23 @@ public class GaragemService {
     @Autowired
     private GaragemRepository garagemRepository;
     
-    public List<Veiculo> findAll() {
-    List<Veiculo> result = garagemRepository.findAll();
-            return result;
-    }
+    public List<VeiculoMinDTO> findAll() {
+    List<Veiculo> resultVeiculo = garagemRepository.findAll();
+    List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
+            return resultDTO;
+//    }
+//   
+//    public List<Veiculo> findById(long id){
+//        List<Veiculo> result = GaragemRepository.findByIDIgnoreCase(id);
+//        return result
+//    }
     
+
+//    public List<VeiculoMinDTO> findAll() {
+//    List<Veiculo> resultVeiculo = garagemRepository.findAll();
+//    
+//    List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
+//            return resultDTO;
+
+}
 }
