@@ -8,6 +8,7 @@ import br.eti.luan.garagem.DTO.VeiculoMinDTO;
 import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.services.GaragemService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,6 +58,22 @@ public ResponseEntity<List<VeiculoMinDTO>> findByCorIgnoreCase(@PathVariable Str
 public ResponseEntity<List<VeiculoMinDTO>> findByAno(@PathVariable int year) {
     List<VeiculoMinDTO> result = garagemService.findByAno(year);
     if(result.isEmpty()){
+            //lista vazia
+            // devolve 404
+            return ResponseEntity.notFound().build();
+            
+        } else {
+            // tem dados
+            // devolve 200
+            return ResponseEntity.ok(result);
+        }
+   
+} 
+
+@GetMapping("/forsale/{Id}")
+public ResponseEntity<Optional<Veiculo>> findById(@PathVariable long Id) {
+        Optional<Veiculo> result = garagemService.findById(Id);
+    if(result == null){
             //lista vazia
             // devolve 404
             return ResponseEntity.notFound().build();
