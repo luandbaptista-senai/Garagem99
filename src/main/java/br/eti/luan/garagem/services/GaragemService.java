@@ -50,10 +50,11 @@ public class GaragemService {
     
     public Optional<Veiculo> findById(long Id) {
         Optional<Veiculo> result = garagemRepository.findById(Id);
-    
+
     return result;}
     
     
+
 //    public Optional<Veiculo> findById(long id) {
 //        return garagemRepository.findById(id);
 //    }
