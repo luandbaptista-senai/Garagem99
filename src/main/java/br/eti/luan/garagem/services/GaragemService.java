@@ -37,12 +37,25 @@ public class GaragemService {
     List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
             return resultDTO;
     }
+    /**
+     *@param ano
+     * @return
+     */
+    public List<VeiculoMinDTO> findByAno(@PathVariable int ano) {
+    List<Veiculo> resultVeiculo = garagemRepository.findByAno(ano);
+    List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
+            return resultDTO;
+    }
+    
+    
 //    }
 //   
 //    public List<Veiculo> findById(long id){
-//        List<Veiculo> result = GaragemRepository.findByIDIgnoreCase(id);
+//        List<Veiculo> result = GaragemRepository.findByID(id);
 //        return result
 //    }
+    
+    
     
 
 //    public List<VeiculoMinDTO> findAll() {

@@ -9,6 +9,7 @@ import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.services.GaragemService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,15 +24,62 @@ public class GaragemController {
     private GaragemService garagemService;
 
 @GetMapping("/forsale")
-public List<VeiculoMinDTO> findAll() {
+public ResponseEntity<List<VeiculoMinDTO>> findAll() {
     List<VeiculoMinDTO> result = garagemService.findAll();
-    return result;
+    if(result.isEmpty()){
+            //lista vazia
+            // devolve 404
+            return ResponseEntity.notFound().build();
+            
+        } else {
+            // tem dados
+            // devolve 200
+            return ResponseEntity.ok(result);
+        }
 } 
-@GetMapping("/cor/{cor}")
-public List<VeiculoMinDTO> findByCorIgnoreCase(@PathVariable String cor) {
+@GetMapping("/color/{cor}")
+public ResponseEntity<List<VeiculoMinDTO>> findByCorIgnoreCase(@PathVariable String cor) {
     List<VeiculoMinDTO> result = garagemService.findByCorIgnoreCase(cor);
-    return result;
+    if(result.isEmpty()){
+            //lista vazia
+            // devolve 404
+            return ResponseEntity.notFound().build();
+            
+        } else {
+            // tem dados
+            // devolve 200
+            return ResponseEntity.ok(result);
+        }
+}    
+
+@GetMapping("/year/{year}")
+public ResponseEntity<List<VeiculoMinDTO>> findByAno(@PathVariable int year) {
+    List<VeiculoMinDTO> result = garagemService.findByAno(year);
+    if(result.isEmpty()){
+            //lista vazia
+            // devolve 404
+            return ResponseEntity.notFound().build();
+            
+        } else {
+            // tem dados
+            // devolve 200
+            return ResponseEntity.ok(result);
+        }
+   
 } 
+
+//    if(result.isEmpty()){
+//            //lista vazia
+//            // devolve 404
+//            return ResponseEntity.notFound().build();
+//            
+//        } else {
+//            // tem dados
+//            // devolve 200
+//            return ResponseEntity.ok(result);
+//        }
+//    
+    
 
 
 }
