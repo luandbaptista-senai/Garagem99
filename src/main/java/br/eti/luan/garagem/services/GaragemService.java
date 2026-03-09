@@ -10,6 +10,7 @@ import br.eti.luan.garagem.repositories.GaragemRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -25,6 +26,17 @@ public class GaragemService {
     List<Veiculo> resultVeiculo = garagemRepository.findAll();
     List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
             return resultDTO;
+    }
+       
+    /**
+     *@param cor
+     * @return
+     */
+    public List<VeiculoMinDTO> findByCorIgnoreCase(@PathVariable String cor) {
+    List<Veiculo> resultVeiculo = garagemRepository.findByCorIgnoreCase(cor);
+    List<VeiculoMinDTO> resultDTO = resultVeiculo.stream().map(x -> new VeiculoMinDTO(x)).toList();
+            return resultDTO;
+    }
 //    }
 //   
 //    public List<Veiculo> findById(long id){
@@ -40,4 +52,4 @@ public class GaragemService {
 //            return resultDTO;
 
 }
-}
+
