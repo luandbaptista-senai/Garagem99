@@ -60,6 +60,7 @@ public class VeiculoMinDTO {
    this.marca = veiculo.getMarca();
    this.modelo = veiculo.getModelo();
    this.cor = veiculo.getCor();
+   this.ano = veiculo.getAno();
    this.km = veiculo.getKm();
    this.linkImagem = veiculo.getLinkImagem();
    

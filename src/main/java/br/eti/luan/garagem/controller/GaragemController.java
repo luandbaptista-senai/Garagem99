@@ -37,6 +37,7 @@ public ResponseEntity<List<VeiculoMinDTO>> findAll() {
             return ResponseEntity.ok(result);
         }
 } 
+
 @GetMapping("/color/{cor}")
 public ResponseEntity<List<VeiculoMinDTO>> findByCorIgnoreCase(@PathVariable String cor) {
     List<VeiculoMinDTO> result = garagemService.findByCorIgnoreCase(cor);

@@ -8,6 +8,7 @@ import br.eti.luan.garagem.DTO.VeiculoMinDTO;
 import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.repositories.GaragemRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,11 +49,8 @@ public class GaragemService {
     }
     
     
-//    }
-//   
-//    public List<Veiculo> findById(long id){
-//        List<Veiculo> result = GaragemRepository.findByID(id);
-//        return result
+//    public Optional<Veiculo> findById(long id) {
+//        return garagemRepository.findById(id);
 //    }
     
     
