@@ -7,12 +7,15 @@ package br.eti.luan.garagem.controller;
 import br.eti.luan.garagem.DTO.VeiculoMinDTO;
 import br.eti.luan.garagem.entities.Veiculo;
 import br.eti.luan.garagem.services.GaragemService;
+import jakarta.persistence.PostLoad;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -73,7 +76,7 @@ public ResponseEntity<List<VeiculoMinDTO>> findByAno(@PathVariable int year) {
 @GetMapping("/forsale/{Id}")
 public ResponseEntity<Optional<Veiculo>> findById(@PathVariable long Id) {
         Optional<Veiculo> result = garagemService.findById(Id);
-    if(result == null){
+    if(result.isEmpty()){
             //lista vazia
             // devolve 404
             return ResponseEntity.notFound().build();
@@ -84,7 +87,19 @@ public ResponseEntity<Optional<Veiculo>> findById(@PathVariable long Id) {
             return ResponseEntity.ok(result);
         }
    
-} 
+}
+
+@PostMapping("/veiculo")
+public ResponseEntity<Veiculo> saveVeiculo(
+@RequestBody Veiculo novoVeiculo
+){
+Optional<Veiculo> optVeiculo = Optional.of(garagemService.salvarVeiculo(novoVeiculo));
+if(optVeiculo.isPresent()){
+return ResponseEntity.ok(optVeiculo.get());
+} else {
+return ResponseEntity.badRequest().build();
+}
+}
 
 //    if(result.isEmpty()){
 //            //lista vazia

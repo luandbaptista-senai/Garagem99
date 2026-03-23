@@ -54,6 +54,14 @@ public class GaragemService {
     return result;}
     
     
+    
+    public Veiculo salvarVeiculo(Veiculo novoVeiculo){
+    Veiculo veiculo =
+            garagemRepository.save(novoVeiculo);
+            return veiculo;
+    }
+    
+    
 
 //    public Optional<Veiculo> findById(long id) {
 //        return garagemRepository.findById(id);

@@ -1,3 +1,4 @@
+
 INSERT INTO veiculo (Marca, Modelo, Cor, Ano, KM, LinkImagem, DescricaoCompleta, Avarias) VALUES ('Chevrolet', 'Onix', 'Prata', 2020, 35000, 'https://source.unsplash.com/300x200/?car,chevrolet', 'Onix 1.0, completo, �nico dono.', 'Amassado na porta traseira.');
 INSERT INTO veiculo (Marca, Modelo, Cor, Ano, KM, LinkImagem, DescricaoCompleta, Avarias) VALUES ('Volkswagen', 'Gol', 'Branco', 2018, 50000, 'https://source.unsplash.com/300x200/?car,volkswagen', 'Gol 1.6, ar condicionado, dire��o hidr�ulica.', 'Arranh�es leves na lataria.');
 INSERT INTO veiculo (Marca, Modelo, Cor, Ano, KM, LinkImagem, DescricaoCompleta, Avarias) VALUES ('Fiat', 'Uno', 'Vermelho', 2015, 70000, 'https://source.unsplash.com/300x200/?car,fiat', 'Uno Mille, b�sico, ideal para o dia a dia.', 'Pequena trinca no para-brisa.');
